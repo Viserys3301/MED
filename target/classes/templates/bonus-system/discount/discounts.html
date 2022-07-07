@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Скидки</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <style>
+        .btn{
+            font-size: 20px;
+        }
+        .headerText{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Название</th>
+        <th scope="col">Стартовая бонусная сумма</th>
+        <th scope="col">Процент скидки</th>
+        <th scope="col">Дата создания</th>
+        <th scope="col">Дата обновления</th>
+        <th scope="col">Активный</th>
+        <th scope="col"><a class="btn btn-success" th:href="@{/bonus_system/discount/new}" role="button">Добавить</a></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="discount : ${discounts}">
+        <th scope="row" th:text="${discount.id}"></th>
+        <th scope="row"  th:text="${discount.title}"></th>
+        <th scope="row"  th:text="${discount.startBonusSum}"></th>
+        <th scope="row"  th:text="${discount.rate}"></th>
+        <th scope="row"  th:text="${discount.dateCreate}"></th>
+        <th scope="row"  th:text="${discount.dateUpdate}"></th>
+        <th scope="row" th:if="${discount.isActive}" style="color: green"  th:text="Активный"></th>
+        <th scope="row" th:if="${!discount.isActive}" style="color: red"  th:text="Неактивный"></th>
+        <td>
+            <a class="btn btn-warning" th:href="@{/bonus_system/discount/{id} (id = ${discount.id})}" role="button">Изменить</a>
+            <a class="btn btn-secondary" th:href="@{/bonus_system/discount/decline/{id} (id = ${discount.id})}" role="button">Отключить</a>
+            <a class="btn btn-success" th:href="@{/bonus_system/discount/include/{id} (id = ${discount.id})}" role="button">Включить</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

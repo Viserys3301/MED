@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Скидка</title>
+</head>
+<body>
+<div class="container">
+    <form th:action="@{new_discount}" th:method="post" th:object="${discount}">
+        <input type="hidden" th:field="*{id}">
+        <title>Название</title>
+        <input type="text" th:field="*{title}" placeholder="Введите название">
+        <hr>
+        <title>Стартовая сумма</title>
+        <input type="text" th:field="*{startBonusSum}" placeholder="Введите стартовую сумму">
+        <hr>
+        <title>Процент скидки</title>
+        <input type="text" th:field="*{rate}" placeholder="Введите процент скидки">
+        <hr>
+        <button id="btn1" type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
+</div>
+</body>
+</html>
