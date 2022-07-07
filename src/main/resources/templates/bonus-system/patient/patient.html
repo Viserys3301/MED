@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Пациент</title>
+</head>
+<body>
+<div class="container">
+    <form th:action="@{new_patient}" th:method="post" th:object="${patient}">
+        <input type="hidden" th:field="*{id}">
+        <title>Имя</title>
+        <input type="text" th:field="*{name}" placeholder="Введите имя">
+        <hr>
+        <title>BizBox ID</title>
+        <input type="text" th:field="*{bizBoxPatientId}" placeholder="Введите ID BizBox">
+        <hr>
+        <title>Уровень скидки</title>
+        <select class="classic" th:field="*{discounts.id}">
+            <option th:each="discount : ${discounts}" th:value="${discount.id}" th:text="${discount.title}"> </option>
+        </select>
+        <hr>
+        <title>Суииа</title>
+        <input type="text" th:field="*{accumulatedAmount}" placeholder="Введите сумму">
+        <hr>
+        <button id="btn1" type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
+</div>
+</body>
+</html>
